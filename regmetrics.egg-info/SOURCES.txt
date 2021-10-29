@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+regmetrics/__init__.py
+regmetrics/metrics.py
+regmetrics.egg-info/PKG-INFO
+regmetrics.egg-info/SOURCES.txt
+regmetrics.egg-info/dependency_links.txt
+regmetrics.egg-info/requires.txt
+regmetrics.egg-info/top_level.txt
+regmetrics.egg-info/zip-safe
