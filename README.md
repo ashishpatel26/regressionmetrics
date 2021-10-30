@@ -81,10 +81,7 @@ Epoch 9/10
  1/13 [=>............................] - ETA: 0s - loss: 291.8670 - r2: 0.9725 - mae: 13.9899 - mse: 291.8670 - rmse: 13.9899 - mape: 61.3658 - 13/13 [==============================] - 0s 3ms/step - loss: 92.3889 - r2: 0.9796 - mae: 6.8932 - mse: 92.3889 - rmse: 6.8932 - mape: 33.2856 - rmsle: 0.3333 - nrmse: 0.3329 - val_loss: 67.2208 - val_r2: 0.9808 - val_mae: 5.8498 - val_mse: 67.2208 - val_rmse: 5.8498 - val_mape: 26.4504 - val_rmsle: 0.2680 - val_nrmse: 0.2645
 Epoch 10/10
  1/13 [=>............................] - ETA: 0s - loss: 97.0853 - r2: 0.9923 - mae: 5.9866 - mse: 97.0853 - rmse: 5.9866 - mape: 24.9878 - rmsl13/13 [==============================] - 0s 3ms/step - loss: 78.3823 - r2: 0.9856 - mae: 6.5958 - mse: 78.3823 - rmse: 6.5958 - mape: 32.8136 - rmsle: 0.3025 - nrmse: 0.3281 - val_loss: 69.5314 - val_r2: 0.9787 - val_mae: 6.8302 - val_mse: 69.5314 - val_rmse: 6.8302 - val_mape: 37.3933 - val_rmsle: 0.2974 - val_nrmse: 0.3739
- ```
 ```
 
-Thanks for visiting this page.
-
+:smiley: Thanks for reading and forking.
 ---
-
