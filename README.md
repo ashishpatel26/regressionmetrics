@@ -62,7 +62,6 @@ model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y
 ```
 
 ```bash
-```bash
 Epoch 1/10
  1/13 [=>............................] - ETA: 7s - loss: 1574.7567 - r2: 0.6597 - mae: 37.1803 - mse: 1574.7567 - rmse: 37.1802 - mape: 159.261313/13 [==============================] - 1s 15ms/step - loss: 270.0653 - r2: 0.9472 - mae: 11.5427 - mse: 270.0653 - rmse: 11.5427 - mape: 57.3519 - rmsle: 0.6445 - nrmse: 0.5735 - val_loss: 88.6351 - val_r2: 0.9727 - val_mae: 6.6028 - val_mse: 88.6351 - val_rmse: 6.6028 - val_mape: 29.6502 - val_rmsle: 0.3161 - val_nrmse: 0.2965
 Epoch 2/10
