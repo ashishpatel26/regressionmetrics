@@ -3,6 +3,7 @@ MANIFEST.in
 README.md
 setup.py
 regmetrics/__init__.py
+regmetrics/kerasmetrics.py
 regmetrics/metrics.py
 regmetrics.egg-info/PKG-INFO
 regmetrics.egg-info/SOURCES.txt

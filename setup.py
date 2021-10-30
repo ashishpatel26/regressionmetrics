@@ -7,9 +7,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.1'
+VERSION = '0.1.1'
 DESCRIPTION = 'Regression Metrics Calculation Made easy'
-LONG_DESCRIPTION = 'This package contains all regression metrics and work similar like scikit-learn met'
+LONG_DESCRIPTION = 'This package contains all regression metrics and work with scikit learn and tensorflow.'
 
 # Setting up
 setup(
@@ -21,7 +21,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=['pandas', 'numpy', 'scikit-learn'],
+    install_requires=['pandas', 'numpy', 'scikit-learn', 'tensorflow-cpu==2.6.0', 'tensorflow-gpu==2.6.0'],
     url='http://github.com/ashishpatel26/regmetrics',
     include_package_data=True,
     classifiers=[
