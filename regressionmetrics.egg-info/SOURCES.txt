@@ -2,6 +2,9 @@ LICENSE
 MANIFEST.in
 README.md
 setup.py
+regressionmetrics/__init__.py
+regressionmetrics/keras.py
+regressionmetrics/metrics.py
 regressionmetrics.egg-info/PKG-INFO
 regressionmetrics.egg-info/SOURCES.txt
 regressionmetrics.egg-info/dependency_links.txt
