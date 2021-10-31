@@ -1,0 +1,10 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+regressionmetrics.egg-info/PKG-INFO
+regressionmetrics.egg-info/SOURCES.txt
+regressionmetrics.egg-info/dependency_links.txt
+regressionmetrics.egg-info/requires.txt
+regressionmetrics.egg-info/top_level.txt
+regressionmetrics.egg-info/zip-safe

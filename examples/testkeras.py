@@ -1,4 +1,4 @@
-from regmetrics.kerasmetrics import *
+from regressionmetrics.keras import *
 import pandas as pd
 import numpy as np
 

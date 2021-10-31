@@ -1,5 +1,19 @@
 # Regression Metrics
 
+## Installation
+
+To install the package from the PyPi repository you can execute the following
+command:
+```sh
+pip install regressionmetrics
+```
+If you prefer, you can clone it and run the setup.py file. Use the following commands to get a copy from GitHub and install all dependencies:
+```bash
+git clone https://github.com/ashishpatel26/regressionmetrics.git
+cd regressionmetrics
+pip install .
+```
+
 * Mean Absolute Error - `sklearn, keras`
 * Mean Square Error - `sklearn, keras`
 * Root Mean Square Error - `sklearn, keras`
@@ -12,20 +26,14 @@
 * Symmetric mean absolute percentage error - `sklearn, keras`
 * Normalized Root Mean Squared Error - `sklearn, keras`
 
-## Installation
 
-To install the package from the PyPi repository you can execute the following
-command:
-```sh
-pip install regmetrics
-```
 
 ## Usage
 
 > Usage with scikit learn :
 
 ```python
-from regmetrics.metrics import *
+from regressionmetrics.metrics import *
 
 y_true = [3, 0.5, 2, 7]
 y_pred = [2.5, 0.0, 2, -8]
@@ -42,7 +50,7 @@ print("MAPE: ", mape(y_true, y_pred))
 > Usage with Tensorflow keras:
 
 ```python
-from regmetrics.kerasmetrics import *
+from regressionmetrics.keras import *
 import pandas as pd
 import numpy as np
 
