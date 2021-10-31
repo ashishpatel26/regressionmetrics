@@ -1,4 +1,5 @@
 import  tensorflow.keras.backend as K
+import tensorflow as tf
 
 def mae(y_true, y_pred):
     """
@@ -68,13 +69,13 @@ def r2(y_true, y_pred):
     Returns:
         [float]: R2    
     """
-    SS_res =  K.sum(K.square(y_true - y_pred), axis=-1)
-    SS_tot = K.sum(K.square(y_true - K.mean(y_true, axis=-1)), axis=-1)
-    return (1 - SS_res/(SS_tot + K.epsilon()))
+    SS_res =  tf.reduce_sum(tf.square(y_true - y_pred), axis=-1)
+    SS_tot = tf.reduce_sum(tf.square(y_true - tf.reduce_mean(y_true, axis=-1)), axis=-1)
+    return (1 - SS_res/(SS_tot + tf.keras.backend.epsilon()))
 
 def adj_r2(y_true, y_pred):
     """
-    Adjusted R2 regression score function.
+    Adjusted R2 regression score function with default inputs.
 
     Best possible score is 1.0, lower values are worse.
 
@@ -85,10 +86,14 @@ def adj_r2(y_true, y_pred):
     Returns:
         [float]: adjusted R2
     """
-    SS_res =  K.sum(K.square(y_true - y_pred), axis=-1)
-    SS_tot = K.sum(K.square(y_true - K.mean(y_true, axis=-1)), axis=-1)
-    p = K.int_shape(y_pred)[-1]
-    return (1 - SS_res/(SS_tot + K.epsilon())) * (1 - p/(p-1))
+    SS_res =  tf.reduce_sum(tf.square(y_true - y_pred), axis=-1)
+    SS_tot = tf.reduce_sum(tf.square(y_true - tf.reduce_mean(y_true, axis=-1)), axis=-1)
+    return (1 - SS_res/(SS_tot + tf.keras.backend.epsilon())) * (1 - (1 - r2(y_true, y_pred)) * (tf.cast(tf.size(y_true), tf.float32) - 1) / (tf.cast(tf.size(y_true), tf.float32) - tf.cast(tf.rank(y_true), tf.float32) - 1))
+    # SS_res =  tf.reduce_sum(tf.square(y_true - y_pred), axis=-1)
+    # SS_tot = tf.reduce_sum(tf.square(y_true - tf.reduce_mean(y_true, axis=-1)), axis=-1)
+    # adj_SS_res = tf.cast(SS_res / (K.shape(y_true)[0] - 1), tf.int32)
+    # adj_SS_tot = tf.cast(SS_tot / (K.shape(y_true)[0] - 1), tf.int32)
+    # return (1 - adj_SS_res/(adj_SS_tot + tf.keras.backend.epsilon()))
 
 def rmsle(y_true, y_pred):
     """
@@ -155,4 +160,3 @@ def nrmse(y_true, y_pred):
         [float]: normalized root mean squared error
     """
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1)) / K.mean(K.abs(y_true), axis=-1)
-

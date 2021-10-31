@@ -7,7 +7,7 @@ with open("README.md") as f:
 # Setting up
 setup(
     name="regressionmetrics",
-    version="1.1.0",
+    version="1.2.0",
     author="ashishpatel26",
     author_email="ashishpatel.ce.2011@gmail.com",
     description="Regression Metrics Calculation Made easy.",
