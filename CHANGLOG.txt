@@ -1,3 +1,7 @@
+- Changelog for v1.3.0 (2021-11-18)
+--------------------------------------------------
+* new regresson metrics are added with details explaination
+
 - Changelog for v1.2.0 (2021-10-31)
 --------------------------------------------------
 * Adjusted r2 score error solved
