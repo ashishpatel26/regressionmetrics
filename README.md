@@ -16,23 +16,38 @@ pip install .
 
 | Metrics                     | Full Form                                      | Interpretation                      | Sklearn | Keras |
 | --------------------------- | ---------------------------------------------- | ----------------------------------- | ------- | ----- |
-| mae                         | Mean Absolute Error                            | Smaller is better (Best value is 0) | ☑️       | ☑️     |
-| mse                         | Mean Sqaured Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| rmse                        | Root Mean Square Error                         | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| rmsle                       | Root Mean Square Log Error                     | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| rmsle_with_negval           | Root Mean Square Log Error with neg. value     | Smaller is better(Best value is 0)  | ☑️       |       |
-| r2 score                    | coefficient of determination                   | Best possible score is 1            | ☑️       | ☑️     |
-| Adjusted r2 score           | Adjusted R2 score                              | Best possible score is 1            | ☑️       | ☑️     |
-| mape                        | Mean Absolute Percentage Error                 | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| msle                        | Mean Sqaured Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| smape                       | Symmetric mean absolute percentage error       | Smaller is better(Best value is 0)  | ☑️       |       |
-| nrmse                       | Normalized Root Mean Square Error.             |                                     | ☑️       | ☑️     |
-| nrmsle                      | Normalized Root Mean Squared Logarithmic Error |                                     | ☑️       |       |
-| medianAE                    | Median Absolute Error                          | Smaller is better(Best value is 0)  | ☑️       |       |
-| mre                         | Mean Relative Error                            | Smaller is better(Best value is 0)  | ☑️       |       |
-| maape                       | Mean Arctangent Absolute Percentage Error      | Smaller is better(Best value is 0)  | ☑️       |       |
-| nse                         | Nash-Sutcliffe Efficiency Coefficient          | Larger is better (Best = 1)         | ☑️       |       |
-| willmott_index_of_agreement | Willmott Index                                 | Larger is better (Best = 1)         | ☑️       |       |
+| MeanAbsoErr                         | Mean Absolute Error                            | Smaller is better (Best value is 0) | ☑️       | ☑️     |
+| MeanSqrtErr                         | Mean Sqaured Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| RootMeanSqrtErr                        | Root Mean Square Error                         | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| RootMeanSqrtLogErr                       | Root Mean Square Log Error                     | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| RootMeanSqrtLogErrNeg           | Root Mean Square Log Error with neg. value     | Smaller is better(Best value is 0)  | ☑️       |       |
+| R2CoefScore                    | coefficient of determination                   | Best possible score is 1            | ☑️       | ☑️     |
+| AdjR2CoefScore           | Adjusted R2 score                              | Best possible score is 1            | ☑️       | ☑️     |
+| MeanAbsPercErr                        | Mean Absolute Percentage Error                 | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| MeanSqrtLogErr                        | Mean Sqaured Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| SymMeanAbsPercErr                       | Symmetric mean absolute percentage error       | Smaller is better(Best value is 0)  | ☑️       |       |
+| NormRootMeanSqrtErr                       | Normalized Root Mean Square Error.             |                                     | ☑️       | ☑️     |
+| NormRootMeanSqrtLogErr                      | Normalized Root Mean Squared Logarithmic Error |                                     | ☑️       |       |
+| MedianAbsErr                    | Median Absolute Error                          | Smaller is better(Best value is 0)  | ☑️       |       |
+| MediaRelErr                         | Mean Relative Error                            | Smaller is better(Best value is 0)  | ☑️       |       |
+| MeanArcAbsPercErr                       | Mean Arctangent Absolute Percentage Error      | Smaller is better(Best value is 0)  | ☑️       |       |
+| NashSutCoeff                         | Nash-Sutcliffe Efficiency Coefficient          | Larger is better (Best = 1)         | ☑️       |       |
+| WillMottIndexAgreeMent | Willmott Index                                 | Larger is better (Best = 1)         | ☑️       |       |
+
+* Mean Absolute Error - `sklearn, keras`
+
+* Mean Square Error - `sklearn, keras`
+* Root Mean Square Error - `sklearn, keras`
+* Root Mean Square Logarithmic Error - `sklearn, keras`
+* Root Mean Square Logarithmic Error with negative value handle - `sklearn`
+* R2 Score - `sklearn, keras`
+* Adjusted R2 Score - `sklearn, keras`
+* Mean Absolute Percentage Error - `sklearn, keras`
+* Mean squared logarithmic Error - `sklearn, keras`
+* Symmetric mean absolute percentage error - `sklearn, keras`
+* Normalized Root Mean Squared Error - `sklearn, keras`
+
+
 
 ## Usage
 
@@ -41,8 +56,8 @@ pip install .
 ```python
 from regressionmetrics.metrics import *
 
-y_true = np.array([3, 0.5, 2, 7])
-y_pred = np.array([2.5, 0.0, 2, -8])
+y_true = [3, 0.5, 2, 7]
+y_pred = [2.5, 0.0, 2, -8]
 
 
 print("R2Score: ",r2(y_true, y_pred))
