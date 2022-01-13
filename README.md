@@ -34,21 +34,6 @@ pip install .
 | nse                         | Nash-Sutcliffe Efficiency Coefficient          | Larger is better (Best = 1)         | ☑️       |       |
 | willmott_index_of_agreement | Willmott Index                                 | Larger is better (Best = 1)         | ☑️       |       |
 
-* Mean Absolute Error - `sklearn, keras`
-
-* Mean Square Error - `sklearn, keras`
-* Root Mean Square Error - `sklearn, keras`
-* Root Mean Square Logarithmic Error - `sklearn, keras`
-* Root Mean Square Logarithmic Error with negative value handle - `sklearn`
-* R2 Score - `sklearn, keras`
-* Adjusted R2 Score - `sklearn, keras`
-* Mean Absolute Percentage Error - `sklearn, keras`
-* Mean squared logarithmic Error - `sklearn, keras`
-* Symmetric mean absolute percentage error - `sklearn, keras`
-* Normalized Root Mean Squared Error - `sklearn, keras`
-
-
-
 ## Usage
 
 > Usage with scikit learn :
@@ -56,8 +41,8 @@ pip install .
 ```python
 from regressionmetrics.metrics import *
 
-y_true = [3, 0.5, 2, 7]
-y_pred = [2.5, 0.0, 2, -8]
+y_true = np.array([3, 0.5, 2, 7])
+y_pred = np.array([2.5, 0.0, 2, -8])
 
 
 print("R2Score: ",r2(y_true, y_pred))

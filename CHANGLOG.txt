@@ -1,3 +1,7 @@
+- Changelog for v1.4.0 (2021-11-18)
+--------------------------------------------------
+* Name clashes resolved with keras names
+
 - Changelog for v1.3.0 (2021-11-18)
 --------------------------------------------------
 * new regresson metrics are added with details explaination

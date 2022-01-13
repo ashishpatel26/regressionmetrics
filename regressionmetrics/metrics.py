@@ -3,7 +3,7 @@ import numpy as np
 
 EPSILON = 1e-10
 
-def mae(y_true, y_pred):
+def MeanAbsoErr(y_true, y_pred):
     """
     Mean absolute error regression loss. smaller is better.
     
@@ -23,7 +23,7 @@ def mae(y_true, y_pred):
     return mean_absolute_error(y_true, y_pred)
 
 
-def mse(y_true, y_pred):
+def MeanSqrtErr(y_true, y_pred):
     """
     Mean squared error regression loss. 
     
@@ -43,7 +43,7 @@ def mse(y_true, y_pred):
     """
     return mean_squared_error(y_true, y_pred)
     
-def rmse(y_true, y_pred):
+def RootMeanSqrtErr(y_true, y_pred):
     """
     Root Mean Square Error regression loss. 
     
@@ -63,7 +63,7 @@ def rmse(y_true, y_pred):
     """
     return np.sqrt(mean_squared_error(y_true, y_pred))
 
-def rmsle(y_true, y_pred):
+def RootMeanSqrtLogErr(y_true, y_pred):
     """
     Root Mean Squared Logarithm Error regression loss. 
     
@@ -89,7 +89,7 @@ def rmsle(y_true, y_pred):
     return np.sqrt(mean_squared_log_error(y_true, y_pred))
 
 
-def rmsle_with_negval(y_true, y_pred):
+def RootMeanSqrtLogErrNeg(y_true, y_pred):
     """
     Root Mean Squared Logarithmic Error with negative values regression loss.  
     
@@ -114,7 +114,7 @@ def rmsle_with_negval(y_true, y_pred):
     
     return RMSLE
 
-def r2(y_true, y_pred):
+def R2CoefScore(y_true, y_pred):
     """
     :math:`R^2` (coefficient of determination) regression score function.
 
@@ -134,7 +134,7 @@ def r2(y_true, y_pred):
     """
     return r2_score(y_true, y_pred)
 
-def adj_r2(y_true, y_pred):
+def AdjR2CoefScore(y_true, y_pred):
     """
     Adjusted R2 regression score function.(Best value is 1.0)
 
@@ -155,7 +155,7 @@ def adj_r2(y_true, y_pred):
     """
     return r2_score(y_true, y_pred) - ((1 - r2_score(y_true, y_pred)) * (len(y_true) - 1) / (len(y_true) - len(y_pred) - 1))
 
-def mape(y_true, y_pred):
+def MeanAbsPercErr(y_true, y_pred):
     """
     Mean absolute percentage error regression loss. 
     
@@ -175,7 +175,7 @@ def mape(y_true, y_pred):
     """
     return mean_absolute_percentage_error(y_true, y_pred)
 
-def msle(y_true, y_pred):
+def MeanSqrtLogErr(y_true, y_pred):
     """
     Mean squared logarithmic error regression loss. 
     
@@ -195,7 +195,7 @@ def msle(y_true, y_pred):
     """
     return mean_squared_log_error(y_true, y_pred)
 
-def smape(y_true: np.ndarray, y_pred: np.ndarray):
+def SymMeanAbsPercErr(y_true: np.ndarray, y_pred: np.ndarray):
     """
     :math:`SMAPE` Symmetric mean absolute percentage error regression loss.
 
@@ -210,7 +210,7 @@ def smape(y_true: np.ndarray, y_pred: np.ndarray):
     """
     return np.mean(2.0 * np.abs(y_true - y_pred) / ((np.abs(y_true) + np.abs(y_pred)) + EPSILON))
 
-def nrmse(y_true, y_pred, type = "minmax"):
+def NormRootMeanSqrtErr(y_true, y_pred, type = "minmax"):
     """
     Normalized Root Mean Square Error.
     
@@ -239,7 +239,7 @@ def nrmse(y_true, y_pred, type = "minmax"):
     elif type!="":
         raise ValueError("type must be either 'sd', 'mean', 'minmax', or 'iqr'")
 
-def nrmsle(y_true, y_pred):
+def NormRootMeanSqrtLogErr(y_true, y_pred):
     """
     Normalized Root Mean Squared Logarithmic Error.
     
@@ -268,7 +268,7 @@ def nrmsle(y_true, y_pred):
     elif type!="":
         raise ValueError("type must be either 'sd', 'mean', 'minmax', or 'iqr'")
 
-def medianAE(y_true, y_pred):
+def MedianAbsErr(y_true, y_pred):
     """
     Median absolute error regression loss. (Best value is 0.0)
     
@@ -284,7 +284,7 @@ def medianAE(y_true, y_pred):
     return median_absolute_error(y_true, y_pred)
 
 
-def mre(y_true, y_pred):
+def MediaRelErr(y_true, y_pred):
     """
     Mean relative error regression loss. 
     
@@ -299,7 +299,7 @@ def mre(y_true, y_pred):
     """
     return np.mean(np.abs(y_true - y_pred) / (y_true + EPSILON))
 
-def maape(y_true, y_pred):
+def MeanArcAbsPercErr(y_true, y_pred):
     """
     Mean Arctangent Absolute Percentage Error regression loss. 
     
@@ -315,7 +315,7 @@ def maape(y_true, y_pred):
     return np.mean(np.abs(np.arctan(y_true) - np.arctan(y_pred)))
 
 
-def mase(y_true, y_pred, y_train):
+def MeanAbsScaErr(y_true, y_pred, y_train):
     """
     Mean absolute scale error regression loss. 
     
@@ -337,7 +337,7 @@ def mase(y_true, y_pred, y_train):
     scale = mean_absolute_error(y_true[1:] - y_pred[:-1])
     return np.mean(np.abs(e_t/ scale))
 
-def nash_sutcliffe_efficiency_coefficient(y_true, y_pred):
+def NashSutCoeff(y_true, y_pred):
     """
     The Nash-Sutcliffe efficiency (NSE) is a normalized statistic that determines the relative magnitude of the residual variance compared to the measured data variance (Nash and Sutcliffe, 1970). 
     
@@ -358,7 +358,7 @@ def nash_sutcliffe_efficiency_coefficient(y_true, y_pred):
     return 1 - ((np.sum((y_true - y_pred)**2)) / (np.sum((y_true - np.mean(y_true))**2)))
 
 
-def willmott_index_of_agreement(y_true, y_pred):
+def WillMottIndexAgreeMent(y_true, y_pred):
     """
     Willmott (1981) proposed an index of agreement (d) as a standardized measure of the degree of model prediction error which varies between 0 and 1. 
     

@@ -13,5 +13,11 @@ model = keras.Sequential([
     layers.Dense(64, activation='relu'),
     layers.Dense(1)
 ])
-model.compile(optimizer='rmsprop', loss='mse', metrics=[r2, mae, mse, rmse, mape, rmsle, nrmse])
+model.compile(optimizer='rmsprop', loss='mse', metrics=[R2CoefScore, 
+                                                        MeanAbsoErr, 
+                                                        MeanSqrtErr, 
+                                                        RootMeanSqrtErr, 
+                                                        MeanAbsPercErr, 
+                                                        RootMeanSqrtLogErr, 
+                                                        NormRootMeanSqrtErr])
 model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
