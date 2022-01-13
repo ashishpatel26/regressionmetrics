@@ -4,7 +4,7 @@
 
 To install the package from the PyPi repository you can execute the following
 command:
-```sh
+```bash
 pip install regressionmetrics
 ```
 If you prefer, you can clone it and run the setup.py file. Use the following commands to get a copy from GitHub and install all dependencies:
@@ -16,23 +16,23 @@ pip install .
 
 | Metrics                     | Full Form                                      | Interpretation                      | Sklearn | Keras |
 | --------------------------- | ---------------------------------------------- | ----------------------------------- | ------- | ----- |
-| MeanAbsoErr                         | Mean Absolute Error                            | Smaller is better (Best value is 0) | ☑️       | ☑️     |
-| MeanSqrtErr                         | Mean Sqaured Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| RootMeanSqrtErr                        | Root Mean Square Error                         | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| RootMeanSqrtLogErr                       | Root Mean Square Log Error                     | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| RootMeanSqrtLogErrNeg           | Root Mean Square Log Error with neg. value     | Smaller is better(Best value is 0)  | ☑️       |       |
-| R2CoefScore                    | coefficient of determination                   | Best possible score is 1            | ☑️       | ☑️     |
-| AdjR2CoefScore           | Adjusted R2 score                              | Best possible score is 1            | ☑️       | ☑️     |
-| MeanAbsPercErr                        | Mean Absolute Percentage Error                 | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| MeanSqrtLogErr                        | Mean Sqaured Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| SymMeanAbsPercErr                       | Symmetric mean absolute percentage error       | Smaller is better(Best value is 0)  | ☑️       |       |
-| NormRootMeanSqrtErr                       | Normalized Root Mean Square Error.             |                                     | ☑️       | ☑️     |
-| NormRootMeanSqrtLogErr                      | Normalized Root Mean Squared Logarithmic Error |                                     | ☑️       |       |
-| MedianAbsErr                    | Median Absolute Error                          | Smaller is better(Best value is 0)  | ☑️       |       |
-| MediaRelErr                         | Mean Relative Error                            | Smaller is better(Best value is 0)  | ☑️       |       |
-| MeanArcAbsPercErr                       | Mean Arctangent Absolute Percentage Error      | Smaller is better(Best value is 0)  | ☑️       |       |
-| NashSutCoeff                         | Nash-Sutcliffe Efficiency Coefficient          | Larger is better (Best = 1)         | ☑️       |       |
-| WillMottIndexAgreeMent | Willmott Index                                 | Larger is better (Best = 1)         | ☑️       |       |
+| **MeanAbsoErr**                     | Mean Absolute Error                            | Smaller is better (Best value is 0) | ☑️       | ☑️     |
+| **MeanSqrtErr**                     | Mean Sqaured Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **RootMeanSqrtErr**                    | Root Mean Square Error                         | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **RootMeanSqrtLogErr**                   | Root Mean Square Log Error                     | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **RootMeanSqrtLogErrNeg**       | Root Mean Square Log Error with neg. value     | Smaller is better(Best value is 0)  | ☑️       |       |
+| **R2CoefScore**                | coefficient of determination                   | Best possible score is 1            | ☑️       | ☑️     |
+| **AdjR2CoefScore**       | Adjusted R2 score                              | Best possible score is 1            | ☑️       | ☑️     |
+| **MeanAbsPercErr**                    | Mean Absolute Percentage Error                 | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **MeanSqrtLogErr**                    | Mean Sqaured Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **SymMeanAbsPercErr**                   | Symmetric mean absolute percentage error       | Smaller is better(Best value is 0)  | ☑️       |       |
+| **NormRootMeanSqrtErr**                   | Normalized Root Mean Square Error.             |                                     | ☑️       | ☑️     |
+| **NormRootMeanSqrtLogErr**                  | Normalized Root Mean Squared Logarithmic Error |                                     | ☑️       |       |
+| **MedianAbsErr**                | Median Absolute Error                          | Smaller is better(Best value is 0)  | ☑️       |       |
+| **MediaRelErr**                     | Mean Relative Error                            | Smaller is better(Best value is 0)  | ☑️       |       |
+| **MeanArcAbsPercErr**                   | Mean Arctangent Absolute Percentage Error      | Smaller is better(Best value is 0)  | ☑️       |       |
+| **NashSutCoeff**                     | Nash-Sutcliffe Efficiency Coefficient          | Larger is better (Best = 1)         | ☑️       |       |
+| **WillMottIndexAgreeMent** | Willmott Index                                 | Larger is better (Best = 1)         | ☑️       |       |
 
 * Mean Absolute Error - `sklearn, keras`
 
@@ -47,11 +47,11 @@ pip install .
 * Symmetric mean absolute percentage error - `sklearn, keras`
 * Normalized Root Mean Squared Error - `sklearn, keras`
 
-
+Colaboratory File :  [![Open In Colab](https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667)](https://colab.research.google.com/github/ashishpatel26/regressionmetrics/blob/main/RegressionMetricsDemo.ipynb)
 
 ## Usage
 
-> Usage with scikit learn :
+> **Usage with scikit learn :**
 
 ```python
 from regressionmetrics.metrics import *
@@ -66,7 +66,8 @@ print("RMSLE with Neg Value:", RootMeanSqrtLogErrNeg(y_true, y_pred))
 print("MSE:", MeanSqrtErr(y_true, y_pred))
 print("MAPE: ", MeanAbsPercErr(y_true, y_pred))
 ```
-Output:
+**Output:**
+
 ```bash
 R2Score:  -8.725067385444744
 Adjusted_R2_Score: 20.450134770889484
@@ -77,7 +78,7 @@ MSE: 56.375
 MAPE:  0.8273809523809523
 ```
 
-> Usage with Tensorflow keras:
+> **Usage with TensorFlow keras:**
 
 ```python
 try:
@@ -110,6 +111,7 @@ model.compile(optimizer='rmsprop', loss='mse', metrics=[R2CoefScore,
                                                         NormRootMeanSqrtErr])
 model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
 ```
+**Output**
 
 ```bash
 Epoch 1/10
