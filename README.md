@@ -55,22 +55,37 @@ pip install .
 
 ```python
 from regressionmetrics.metrics import *
-
 y_true = [3, 0.5, 2, 7]
 y_pred = [2.5, 0.0, 2, -8]
 
-
-print("R2Score: ",r2(y_true, y_pred))
-print("Adjusted_R2_Score:",adj_r2(y_true, y_pred))
-print("RMSE:", rmse(y_true, y_pred))
-print("MAE:",mae(y_true, y_pred))
-print("RMSLE with Neg Value:", rmsle_with_negval(y_true, y_pred))
-print("MSE:", mse(y_true, y_pred))
-print("MAPE: ", mape(y_true, y_pred))
+print("R2Score: ",R2CoefScore(y_true, y_pred))
+print("Adjusted_R2_Score:",AdjR2CoefScore(y_true, y_pred))
+print("RMSE:", RootMeanSqrtErr(y_true, y_pred))
+print("MAE:",MeanAbsoErr(y_true, y_pred))
+print("RMSLE with Neg Value:", RootMeanSqrtLogErrNeg(y_true, y_pred))
+print("MSE:", MeanSqrtErr(y_true, y_pred))
+print("MAPE: ", MeanAbsPercErr(y_true, y_pred))
 ```
+Output:
+```bash
+R2Score:  -8.725067385444744
+Adjusted_R2_Score: 20.450134770889484
+RMSE: 7.508328708840604
+MAE: 4.0
+RMSLE with Neg Value: 0.21344354447336292
+MSE: 56.375
+MAPE:  0.8273809523809523
+```
+
 > Usage with Tensorflow keras:
 
 ```python
+try:
+  from regressionmetrics.keras import *
+except:
+  import os
+  os.system("pip install regressionmetrics")
+
 from regressionmetrics.keras import *
 import pandas as pd
 import numpy as np
@@ -86,29 +101,38 @@ model = keras.Sequential([
     layers.Dense(64, activation='relu'),
     layers.Dense(1)
 ])
-model.compile(optimizer='rmsprop', loss='mse', metrics=[r2, mae, mse, rmse, mape, rmsle, nrmse])
+model.compile(optimizer='rmsprop', loss='mse', metrics=[R2CoefScore, 
+                                                        MeanAbsoErr, 
+                                                        MeanSqrtErr, 
+                                                        RootMeanSqrtErr, 
+                                                        MeanAbsPercErr, 
+                                                        RootMeanSqrtLogErr, 
+                                                        NormRootMeanSqrtErr])
 model.fit(x_train, y_train, epochs=10, batch_size=32, validation_data=(x_test, y_test))
 ```
 
 ```bash
 Epoch 1/10
- 1/13 [=>............................] - ETA: 7s - loss: 1574.7567 - r2: 0.6597 - mae: 37.1803 - mse: 1574.7567 - rmse: 37.1802 - mape: 159.261313/13 [==============================] - 1s 15ms/step - loss: 270.0653 - r2: 0.9472 - mae: 11.5427 - mse: 270.0653 - rmse: 11.5427 - mape: 57.3519 - rmsle: 0.6445 - nrmse: 0.5735 - val_loss: 88.6351 - val_r2: 0.9727 - val_mae: 6.6028 - val_mse: 88.6351 - val_rmse: 6.6028 - val_mape: 29.6502 - val_rmsle: 0.3161 - val_nrmse: 0.2965
+13/13 [==============================] - 2s 29ms/step - loss: 461.6622 - R2CoefScore: 0.9004 - MeanAbsoErr: 14.6653 - MeanSqrtErr: 461.6622 - RootMeanSqrtErr: 14.6653 - MeanAbsPercErr: 75.2677 - RootMeanSqrtLogErr: 0.7278 - NormRootMeanSqrtErr: 0.7527 - val_loss: 300.4463 - val_R2CoefScore: 0.8947 - val_MeanAbsoErr: 15.4050 - val_MeanSqrtErr: 300.4463 - val_RootMeanSqrtErr: 15.4050 - val_MeanAbsPercErr: 69.2703 - val_RootMeanSqrtLogErr: 1.2662 - val_NormRootMeanSqrtErr: 0.6927
 Epoch 2/10
- 1/13 [=>............................] - ETA: 0s - loss: 74.6623 - r2: 0.9913 - mae: 5.5958 - mse: 74.6623 - rmse: 5.5958 - mape: 25.3655 - rmsl13/13 [==============================] - 0s 3ms/step - loss: 87.1876 - r2: 0.9856 - mae: 6.9466 - mse: 87.1876 - rmse: 6.9466 - mape: 33.4256 - rmsle: 0.3057 - nrmse: 0.3343 - val_loss: 81.7884 - val_r2: 0.9712 - val_mae: 6.6424 - val_mse: 81.7884 - val_rmse: 6.6424 - val_mape: 28.8687 - val_rmsle: 0.3334 - val_nrmse: 0.2887
+13/13 [==============================] - 0s 4ms/step - loss: 184.7860 - R2CoefScore: 0.9527 - MeanAbsoErr: 10.9894 - MeanSqrtErr: 184.7860 - RootMeanSqrtErr: 10.9894 - MeanAbsPercErr: 56.5819 - RootMeanSqrtLogErr: 0.5995 - NormRootMeanSqrtErr: 0.5658 - val_loss: 305.9124 - val_R2CoefScore: 0.8910 - val_MeanAbsoErr: 15.4291 - val_MeanSqrtErr: 305.9124 - val_RootMeanSqrtErr: 15.4291 - val_MeanAbsPercErr: 71.9620 - val_RootMeanSqrtLogErr: 1.3943 - val_NormRootMeanSqrtErr: 0.7196
 Epoch 3/10
- 1/13 [=>............................] - ETA: 0s - loss: 41.2790 - r2: 0.9722 - mae: 5.3798 - mse: 41.2790 - rmse: 5.3798 - mape: 28.7497 - rmsl13/13 [==============================] - 0s 3ms/step - loss: 103.6462 - r2: 0.9825 - mae: 7.1041 - mse: 103.6462 - rmse: 7.1041 - mape: 34.6278 - rmsle: 0.3231 - nrmse: 0.3463 - val_loss: 71.7539 - val_r2: 0.9769 - val_mae: 6.1455 - val_mse: 71.7539 - val_rmse: 6.1455 - val_mape: 27.5078 - val_rmsle: 0.2893 - val_nrmse: 0.2751
+13/13 [==============================] - 0s 5ms/step - loss: 198.5649 - R2CoefScore: 0.9507 - MeanAbsoErr: 12.0198 - MeanSqrtErr: 198.5649 - RootMeanSqrtErr: 12.0198 - MeanAbsPercErr: 62.6733 - RootMeanSqrtLogErr: 0.6901 - NormRootMeanSqrtErr: 0.6267 - val_loss: 80.2263 - val_R2CoefScore: 0.9807 - val_MeanAbsoErr: 7.0446 - val_MeanSqrtErr: 80.2263 - val_RootMeanSqrtErr: 7.0446 - val_MeanAbsPercErr: 43.2890 - val_RootMeanSqrtLogErr: 0.3114 - val_NormRootMeanSqrtErr: 0.4329
 Epoch 4/10
- 1/13 [=>............................] - ETA: 0s - loss: 113.6758 - r2: 0.9917 - mae: 6.6575 - mse: 113.6758 - rmse: 6.6575 - mape: 20.8683 - rm13/13 [==============================] - 0s 3ms/step - loss: 88.1601 - r2: 0.9823 - mae: 6.8479 - mse: 88.1601 - rmse: 6.8479 - mape: 32.5867 - rmsle: 0.3080 - nrmse: 0.3259 - val_loss: 63.3707 - val_r2: 0.9829 - val_mae: 6.0845 - val_mse: 63.3707 - val_rmse: 6.0845 - val_mape: 33.1628 - val_rmsle: 0.2747 - val_nrmse: 0.3316
+13/13 [==============================] - 0s 6ms/step - loss: 197.9205 - R2CoefScore: 0.9613 - MeanAbsoErr: 10.8593 - MeanSqrtErr: 197.9205 - RootMeanSqrtErr: 10.8593 - MeanAbsPercErr: 56.8981 - RootMeanSqrtLogErr: 0.5830 - NormRootMeanSqrtErr: 0.5690 - val_loss: 139.6424 - val_R2CoefScore: 0.9512 - val_MeanAbsoErr: 9.2244 - val_MeanSqrtErr: 139.6424 - val_RootMeanSqrtErr: 9.2244 - val_MeanAbsPercErr: 38.9547 - val_RootMeanSqrtLogErr: 0.5582 - val_NormRootMeanSqrtErr: 0.3895
 Epoch 5/10
- 1/13 [=>............................] - ETA: 0s - loss: 85.8188 - r2: 0.9893 - mae: 7.0097 - mse: 85.8188 - rmse: 7.0097 - mape: 34.8362 - rmsl13/13 [==============================] - 0s 3ms/step - loss: 82.3233 - r2: 0.9860 - mae: 6.5795 - mse: 82.3233 - rmse: 6.5795 - mape: 32.5198 - rmsle: 0.3105 - nrmse: 0.3252 - val_loss: 74.4783 - val_r2: 0.9813 - val_mae: 6.8936 - val_mse: 74.4783 - val_rmse: 6.8936 - val_mape: 41.9492 - val_rmsle: 0.3067 - val_nrmse: 0.4195
+13/13 [==============================] - 0s 4ms/step - loss: 164.3372 - R2CoefScore: 0.9641 - MeanAbsoErr: 10.6009 - MeanSqrtErr: 164.3372 - RootMeanSqrtErr: 10.6009 - MeanAbsPercErr: 55.5600 - RootMeanSqrtLogErr: 0.5740 - NormRootMeanSqrtErr: 0.5556 - val_loss: 142.1380 - val_R2CoefScore: 0.9564 - val_MeanAbsoErr: 10.7172 - val_MeanSqrtErr: 142.1380 - val_RootMeanSqrtErr: 10.7172 - val_MeanAbsPercErr: 63.0724 - val_RootMeanSqrtLogErr: 0.4243 - val_NormRootMeanSqrtErr: 0.6307
+Epoch 6/10
+13/13 [==============================] - 0s 5ms/step - loss: 176.5649 - R2CoefScore: 0.9584 - MeanAbsoErr: 11.0135 - MeanSqrtErr: 176.5649 - RootMeanSqrtErr: 11.0135 - MeanAbsPercErr: 56.6267 - RootMeanSqrtLogErr: 0.5719 - NormRootMeanSqrtErr: 0.5663 - val_loss: 217.2575 - val_R2CoefScore: 0.9235 - val_MeanAbsoErr: 12.4566 - val_MeanSqrtErr: 217.2575 - val_RootMeanSqrtErr: 12.4566 - val_MeanAbsPercErr: 55.4557 - val_RootMeanSqrtLogErr: 0.9559 - val_NormRootMeanSqrtErr: 0.5546
 Epoch 7/10
- 1/13 [=>............................] - ETA: 0s - loss: 105.6430 - r2: 0.9658 - mae: 9.4737 - mse: 105.6430 - rmse: 9.4737 - mape: 53.0854 - rm13/13 [==============================] - 0s 3ms/step - loss: 76.0740 - r2: 0.9856 - mae: 6.4234 - mse: 76.0740 - rmse: 6.4234 - mape: 31.8728 - rmsle: 0.2828 - nrmse: 0.3187 - val_loss: 104.1779 - val_r2: 0.9679 - val_mae: 7.5539 - val_mse: 104.1779 - val_rmse: 7.5539 - val_mape: 30.9401 - val_rmsle: 0.3692 - val_nrmse: 0.3094
+13/13 [==============================] - 0s 4ms/step - loss: 157.5359 - R2CoefScore: 0.9567 - MeanAbsoErr: 9.5872 - MeanSqrtErr: 157.5359 - RootMeanSqrtErr: 9.5872 - MeanAbsPercErr: 50.5483 - RootMeanSqrtLogErr: 0.5250 - NormRootMeanSqrtErr: 0.5055 - val_loss: 411.2795 - val_R2CoefScore: 0.8542 - val_MeanAbsoErr: 18.6303 - val_MeanSqrtErr: 411.2795 - val_RootMeanSqrtErr: 18.6303 - val_MeanAbsPercErr: 85.9467 - val_RootMeanSqrtLogErr: 1.6382 - val_NormRootMeanSqrtErr: 0.8595
 Epoch 8/10
- 1/13 [=>............................] - ETA: 0s - loss: 100.0114 - r2: 0.9833 - mae: 6.8492 - mse: 100.0114 - rmse: 6.8492 - mape: 27.9621 - rm13/13 [==============================] - 0s 4ms/step - loss: 68.4268 - r2: 0.9892 - mae: 5.9540 - mse: 68.4268 - rmse: 5.9540 - mape: 29.7586 - rmsle: 0.2623 - nrmse: 0.2976 - val_loss: 171.7968 - val_r2: 0.9412 - val_mae: 10.5855 - val_mse: 171.7968 - val_rmse: 10.5855 - val_mape: 47.9010 - val_rmsle: 0.7561 - val_nrmse: 0.4790
+13/13 [==============================] - 0s 4ms/step - loss: 115.8139 - R2CoefScore: 0.9795 - MeanAbsoErr: 7.9076 - MeanSqrtErr: 115.8139 - RootMeanSqrtErr: 7.9076 - MeanAbsPercErr: 39.5189 - RootMeanSqrtLogErr: 0.3936 - NormRootMeanSqrtErr: 0.3952 - val_loss: 72.1911 - val_R2CoefScore: 0.9813 - val_MeanAbsoErr: 6.7830 - val_MeanSqrtErr: 72.1911 - val_RootMeanSqrtErr: 6.7830 - val_MeanAbsPercErr: 40.6487 - val_RootMeanSqrtLogErr: 0.2993 - val_NormRootMeanSqrtErr: 0.4065
 Epoch 9/10
- 1/13 [=>............................] - ETA: 0s - loss: 291.8670 - r2: 0.9725 - mae: 13.9899 - mse: 291.8670 - rmse: 13.9899 - mape: 61.3658 - 13/13 [==============================] - 0s 3ms/step - loss: 92.3889 - r2: 0.9796 - mae: 6.8932 - mse: 92.3889 - rmse: 6.8932 - mape: 33.2856 - rmsle: 0.3333 - nrmse: 0.3329 - val_loss: 67.2208 - val_r2: 0.9808 - val_mae: 5.8498 - val_mse: 67.2208 - val_rmse: 5.8498 - val_mape: 26.4504 - val_rmsle: 0.2680 - val_nrmse: 0.2645
+13/13 [==============================] - 0s 5ms/step - loss: 214.5103 - R2CoefScore: 0.9397 - MeanAbsoErr: 10.9144 - MeanSqrtErr: 214.5103 - RootMeanSqrtErr: 10.9144 - MeanAbsPercErr: 56.2217 - RootMeanSqrtLogErr: 0.5520 - NormRootMeanSqrtErr: 0.5622 - val_loss: 87.2555 - val_R2CoefScore: 0.9733 - val_MeanAbsoErr: 6.8626 - val_MeanSqrtErr: 87.2555 - val_RootMeanSqrtErr: 6.8626 - val_MeanAbsPercErr: 28.4989 - val_RootMeanSqrtLogErr: 0.3236 - val_NormRootMeanSqrtErr: 0.2850
 Epoch 10/10
- 1/13 [=>............................] - ETA: 0s - loss: 97.0853 - r2: 0.9923 - mae: 5.9866 - mse: 97.0853 - rmse: 5.9866 - mape: 24.9878 - rmsl13/13 [==============================] - 0s 3ms/step - loss: 78.3823 - r2: 0.9856 - mae: 6.5958 - mse: 78.3823 - rmse: 6.5958 - mape: 32.8136 - rmsle: 0.3025 - nrmse: 0.3281 - val_loss: 69.5314 - val_r2: 0.9787 - val_mae: 6.8302 - val_mse: 69.5314 - val_rmse: 6.8302 - val_mape: 37.3933 - val_rmsle: 0.2974 - val_nrmse: 0.3739
+13/13 [==============================] - 0s 6ms/step - loss: 159.1116 - R2CoefScore: 0.9662 - MeanAbsoErr: 9.1501 - MeanSqrtErr: 159.1116 - RootMeanSqrtErr: 9.1501 - MeanAbsPercErr: 46.7719 - RootMeanSqrtLogErr: 0.5018 - NormRootMeanSqrtErr: 0.4677 - val_loss: 69.8977 - val_R2CoefScore: 0.9841 - val_MeanAbsoErr: 6.0780 - val_MeanSqrtErr: 69.8977 - val_RootMeanSqrtErr: 6.0780 - val_MeanAbsPercErr: 32.4612 - val_RootMeanSqrtLogErr: 0.2741 - val_NormRootMeanSqrtErr: 0.3246
+<keras.callbacks.History at 0x7f78e997f550>
 ```
 
 :smiley: Thanks for reading and forking.
