@@ -17,14 +17,14 @@ pip install .
 | Metrics                     | Full Form                                      | Interpretation                      | Sklearn | Keras |
 | --------------------------- | ---------------------------------------------- | ----------------------------------- | ------- | ----- |
 | **MeanAbsoErr**                     | Mean Absolute Error                            | Smaller is better (Best value is 0) | ☑️       | ☑️     |
-| **MeanSqrtErr**                     | Mean Sqaured Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **MeanSqrtErr**                     | Mean Squared Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
 | **RootMeanSqrtErr**                    | Root Mean Square Error                         | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
 | **RootMeanSqrtLogErr**                   | Root Mean Square Log Error                     | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
 | **RootMeanSqrtLogErrNeg**       | Root Mean Square Log Error with neg. value     | Smaller is better(Best value is 0)  | ☑️       |       |
 | **R2CoefScore**                | coefficient of determination                   | Best possible score is 1            | ☑️       | ☑️     |
 | **AdjR2CoefScore**       | Adjusted R2 score                              | Best possible score is 1            | ☑️       | ☑️     |
 | **MeanAbsPercErr**                    | Mean Absolute Percentage Error                 | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-| **MeanSqrtLogErr**                    | Mean Sqaured Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+| **MeanSqrtLogErr**                    | Mean Squared Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
 | **SymMeanAbsPercErr**                   | Symmetric mean absolute percentage error       | Smaller is better(Best value is 0)  | ☑️       |       |
 | **NormRootMeanSqrtErr**                   | Normalized Root Mean Square Error.             |                                     | ☑️       | ☑️     |
 | **NormRootMeanSqrtLogErr**                  | Normalized Root Mean Squared Logarithmic Error |                                     | ☑️       |       |
