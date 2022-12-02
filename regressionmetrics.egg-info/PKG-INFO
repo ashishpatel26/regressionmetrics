@@ -25,14 +25,14 @@ Description: # Regression Metrics
         | Metrics                     | Full Form                                      | Interpretation                      | Sklearn | Keras |
         | --------------------------- | ---------------------------------------------- | ----------------------------------- | ------- | ----- |
         | mae                         | Mean Absolute Error                            | Smaller is better (Best value is 0) | ☑️       | ☑️     |
-        | mse                         | Mean Sqaured Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+        | mse                         | Mean Squared Error                             | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
         | rmse                        | Root Mean Square Error                         | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
         | rmsle                       | Root Mean Square Log Error                     | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
         | rmsle_with_negval           | Root Mean Square Log Error with neg. value     | Smaller is better(Best value is 0)  | ☑️       |       |
         | r2 score                    | coefficient of determination                   | Best possible score is 1            | ☑️       | ☑️     |
         | Adjusted r2 score           | Adjusted R2 score                              | Best possible score is 1            | ☑️       | ☑️     |
         | mape                        | Mean Absolute Percentage Error                 | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
-        | msle                        | Mean Sqaured Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
+        | msle                        | Mean Squared Logarithm Error                   | Smaller is better(Best value is 0)  | ☑️       | ☑️     |
         | smape                       | Symmetric mean absolute percentage error       | Smaller is better(Best value is 0)  | ☑️       |       |
         | nrmse                       | Normalized Root Mean Square Error.             |                                     | ☑️       | ☑️     |
         | nrmsle                      | Normalized Root Mean Squared Logarithmic Error |                                     | ☑️       |       |
